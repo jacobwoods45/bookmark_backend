@@ -16,7 +16,10 @@ def insert_link():
     device = request.json.get('device')
         
     database_handler.insert_link(link, date, device)
-    return "logged"
+    response = {
+        "status": "success"
+    }
+    return response
 @app.route("/get_links", methods= ["GET"])
 @cross_origin()
 def get_links():
