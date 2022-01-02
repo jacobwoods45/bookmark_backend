@@ -1,11 +1,13 @@
 from flask import Flask, request
 from flask_restful import Api
 import database_handler
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 api = Api(app)
 
 @app.route("/insert_link", methods =["POST"])
+@cross_origin()
 def insert_link():
     link = request.json.get('link')
     date = request.json.get('date')
@@ -14,6 +16,7 @@ def insert_link():
     database_handler.insert_link(link, date, device)
     return "logged"
 @app.route("/get_links", methods= ["GET"])
+@cross_origin()
 def get_links():
     response = {
         "links" : database_handler.get_all_links()
