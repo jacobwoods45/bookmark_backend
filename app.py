@@ -28,6 +28,13 @@ def get_links():
     }
     return response
 
+@app.route("/delete_link", methods= ["DELETE"])
+@cross_origin()
+def delete_link():
+    link = request.json.get('link')
+    database_handler.delete_link(link)
+    response = "deleted"
+    return response
 
 
 

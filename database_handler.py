@@ -19,4 +19,7 @@ def get_all_links():
           links_array.append(document["link"])
     print(links_array)
     return links_array
-
+    
+def delete_link(link):
+    query = {"link":link}
+    links.delete_one(query)
